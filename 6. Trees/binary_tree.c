@@ -9,6 +9,7 @@ struct Node {
 };
 typedef struct Node Node;
 
+static void Display_Inorder(Node *node);
 
 int main(int argc, char* argv[])
 {
@@ -28,10 +29,31 @@ int main(int argc, char* argv[])
     root->Right->Right = NULL;
     root->Right->Left  = NULL;
 
+    Display_Inorder(root);
+
     return 0;
 }
 
-void Display_Tree(Node *new_node)
+
+static void new_node(int data)
 {
-    
+    Node *temp = (Node *)malloc(sizeof(Node));
+    temp->value = data;
+    temp->Left = NULL;
+    temp->Right = NULL;
 }
+
+
+static void Display_Inorder(Node *node)
+{   
+    /*left-root-right*/
+
+    if (node == NULL)
+        return;
+    
+    Display_Inorder(node->Left);
+
+    printf("%d\n", node->value);
+
+    Display_Inorder(node->Right);
+}   
