@@ -12,8 +12,10 @@ typedef struct Node Node;
 
 
 /*static function prototypes*/
-static void Display_Inorder(Node *node);
 static Node* new_node(int data);
+static void Display_Inorder(Node *node);
+static void Display_Preorder(Node *node);
+
 
 
 /**
@@ -22,17 +24,33 @@ static Node* new_node(int data);
  */
 int main(int argc, char* argv[])
 {
-    Node *root = new_node(50);
-    root->Left = new_node(30);
-    root->Right = new_node(60);
-    root->Left->Left  = new_node(40);
-    root->Left->Right = new_node(45);
-    root->Right->Left  = new_node(55);
-    root->Right->Right = new_node(65);
+    Node *root = new_node(0);
+    root->Left = new_node(-5);
+    root->Right = new_node(+5);
+    root->Left->Left  = new_node(-10);
+    root->Left->Right = new_node(-2);
+    root->Right->Left  = new_node(+2);
+    root->Right->Right = new_node(+10);
     
-    Display_Inorder(root);
+    //Display_Inorder(root);
+    Display_Preorder(root);
     return 0;
 }
+
+/**
+ *  Tree Structure used:
+ * 
+ *                            0
+ *                            |
+ *                ------------------------
+ *               -5                     +5
+ *                |                      |
+ *      ------------------        ----------------
+ *      |                |        |              |
+ *     -10              -2       +2             +10
+ * 
+ */
+
 
 /**
  * @brief  function that create new node
@@ -66,3 +84,23 @@ static void Display_Inorder(Node *node)
     /*visit right nodes*/
     Display_Inorder(node->Right);
 }   
+
+
+/**
+ * @brief  function for preorder travarsal
+ * @retval node
+ */
+static void Display_Preorder(Node *node)
+{
+    if (node == NULL)
+        return;
+
+    /*print data of node*/
+    printf("%d\n", node->value);
+
+    /*visit left nodes*/
+    Display_Inorder(node->Left);
+
+    /*visit right nodes*/
+    Display_Inorder(node->Right);
+}
