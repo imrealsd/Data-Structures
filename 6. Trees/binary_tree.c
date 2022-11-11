@@ -24,11 +24,12 @@ static void Display_Preorder(Node *node);
  */
 int main(int argc, char* argv[])
 {
-    Node *root = new_node(0);
-    root->Left = new_node(-5);
+    Node *root  = new_node(0);
+    root->Left  = new_node(-5);
     root->Right = new_node(+5);
-    root->Left->Left  = new_node(-10);
-    root->Left->Right = new_node(-2);
+    
+    root->Left->Left   = new_node(-10);
+    root->Left->Right  = new_node(-2);
     root->Right->Left  = new_node(+2);
     root->Right->Right = new_node(+10);
     
