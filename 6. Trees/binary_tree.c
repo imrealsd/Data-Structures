@@ -15,6 +15,7 @@ typedef struct Node Node;
 static Node* new_node(int data);
 static void Display_Inorder(Node *node);
 static void Display_Preorder(Node *node);
+static void Display_Postorder(Node *node);
 
 
 
@@ -33,8 +34,13 @@ int main(int argc, char* argv[])
     root->Right->Left  = new_node(+2);
     root->Right->Right = new_node(+10);
     
-    //Display_Inorder(root);
+    printf("Inorder  :");
+    Display_Inorder(root);
+    printf("\nPreorder :");
     Display_Preorder(root);
+    printf("\nPostorder:");
+    Display_Postorder(root);
+
     return 0;
 }
 
@@ -80,7 +86,7 @@ static void Display_Inorder(Node *node)
     Display_Inorder(node->Left);
 
     /*print data of node*/
-    printf("%d\n", node->value);
+    printf("%d ", node->value);
 
     /*visit right nodes*/
     Display_Inorder(node->Right);
@@ -97,11 +103,31 @@ static void Display_Preorder(Node *node)
         return;
 
     /*print data of node*/
-    printf("%d\n", node->value);
+    printf("%d ", node->value);
 
     /*visit left nodes*/
-    Display_Inorder(node->Left);
+    Display_Preorder(node->Left);
 
     /*visit right nodes*/
-    Display_Inorder(node->Right);
+    Display_Preorder(node->Right);
 }
+
+/**
+ * @brief  function for postorder travarsal
+ * @retval node
+ */
+static void Display_Postorder(Node *node)
+{
+    if (node == NULL)
+        return;
+
+    /*visit left nodes*/
+    Display_Postorder(node->Left);
+
+    /*visit right nodes*/
+    Display_Postorder(node->Right);
+
+    /*print data of node*/
+    printf("%d ", node->value);
+}
+
