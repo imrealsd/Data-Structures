@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 
 /**
  * @brief  function that create new node
- * @retval Node* [structuture pointer]
+ * @retval Node* [structure pointer]
  */
 static Node* new_node(int data)
 {
