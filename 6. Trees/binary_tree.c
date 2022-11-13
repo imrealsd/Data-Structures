@@ -156,7 +156,6 @@ static void insert_node(Node* root, int data)
 
     /*else start inserting*/
     } else {
-
         ptr->value = data;
         ptr->Left = NULL;
         ptr->Right = NULL;
