@@ -16,6 +16,7 @@ static Node* new_node(int data);
 static void Display_Inorder(Node *node);
 static void Display_Preorder(Node *node);
 static void Display_Postorder(Node *node);
+static void insert_node(Node* root, int data);
 
 
 
@@ -34,12 +35,19 @@ int main(int argc, char* argv[])
     root->Right->Left  = new_node(+2);
     root->Right->Right = new_node(+10);
     
-    printf("Inorder  :");
+    printf("\nInorder  :");
     Display_Inorder(root);
-    printf("\nPreorder :");
-    Display_Preorder(root);
-    printf("\nPostorder:");
-    Display_Postorder(root);
+
+    // printf("\nPreorder :");
+    // Display_Preorder(root);
+    // printf("\nPostorder:");
+    // Display_Postorder(root);
+
+    insert_node(root, 12);
+    insert_node(root, -1);
+
+    printf("\nInorder  :");
+    Display_Inorder(root);
 
     return 0;
 }
@@ -112,6 +120,7 @@ static void Display_Preorder(Node *node)
     Display_Preorder(node->Right);
 }
 
+
 /**
  * @brief  function for postorder travarsal
  * @retval node
@@ -131,3 +140,53 @@ static void Display_Postorder(Node *node)
     printf("%d ", node->value);
 }
 
+
+/**
+ * @brief  function for inserting node
+ * @retval node
+ */
+static void insert_node(Node* root, int data)
+{
+    Node *ptr, *nodeptr, *parentptr;
+    ptr = (Node *)malloc(sizeof(Node));
+
+    /*if ptr is empty return [memory full]*/
+    if (ptr == NULL){
+        printf("Can't Insert\n");
+
+    /*else start inserting*/
+    } else {
+
+        ptr->value = data;
+        ptr->Left = NULL;
+        ptr->Right = NULL;
+    
+        /*if inserting first node: root = first node = ptr*/
+        if (root == NULL){
+            root = ptr;
+
+        /*else travarse and find the insertion position*/
+        } else {
+            parentptr = NULL;
+            nodeptr = root;
+
+            while (nodeptr != NULL){
+                parentptr = nodeptr;
+
+                if (data < nodeptr->value){
+                    nodeptr = nodeptr->Left;
+                } else {
+                    nodeptr = nodeptr->Right;
+                }
+            }
+        }
+
+        /* if new data is less than parent_node , insert at left pos*/
+        if (data < parentptr->value){
+            parentptr->Left = ptr;
+        /*else insert at right pos*/
+        } else {
+            parentptr->Right = ptr;
+        }
+    }
+}
