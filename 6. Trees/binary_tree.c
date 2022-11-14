@@ -92,10 +92,8 @@ static void Display_Inorder(Node *node)
     
     /*visit left nodes*/
     Display_Inorder(node->Left);
-
     /*print data of node*/
     printf("%d ", node->value);
-
     /*visit right nodes*/
     Display_Inorder(node->Right);
 }   
@@ -112,10 +110,8 @@ static void Display_Preorder(Node *node)
 
     /*print data of node*/
     printf("%d ", node->value);
-
     /*visit left nodes*/
     Display_Preorder(node->Left);
-
     /*visit right nodes*/
     Display_Preorder(node->Right);
 }
@@ -132,13 +128,12 @@ static void Display_Postorder(Node *node)
 
     /*visit left nodes*/
     Display_Postorder(node->Left);
-
     /*visit right nodes*/
     Display_Postorder(node->Right);
-
     /*print data of node*/
     printf("%d ", node->value);
 }
+
 
 
 /**
