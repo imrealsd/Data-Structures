@@ -184,3 +184,8 @@ static void insert_node(Node* root, int data)
         }
     }
 }
+
+static void delete_node(int data)
+{
+    
+}
