@@ -8,7 +8,7 @@ static int linear_search(int *arr, int element, int size);
 /**
  * @brief program entry point
  * @retval int
-*/
+ */
 int main(int argc, char** argv)
 {
     int arr[MAX] = {56,78,0,34,12,84,22,24,67,65,51,49};
@@ -22,6 +22,10 @@ int main(int argc, char** argv)
 }
 
 
+/**
+ * @brief  func for linear serach
+ * @retval int
+ */
 static int linear_search(int *arr, int element, int size)
 {   
     for (int i = 0; i < size; i++){
